@@ -1,0 +1,205 @@
+[gd_scene load_steps=16 format=3 uid="uid://4ndggwgooqt1"]
+
+[ext_resource type="Script" path="res://Scripts/CardManager.gd" id="1_pbw6q"]
+[ext_resource type="PackedScene" uid="uid://h2xak3w7511s" path="res://Scenes/OpponentCardSlot.tscn" id="2_v1gob"]
+[ext_resource type="PackedScene" uid="uid://p3otdlfujba7" path="res://Scenes/CardSlot.tscn" id="3_50glp"]
+[ext_resource type="Script" path="res://Scripts/PlayerHand.gd" id="3_jw32o"]
+[ext_resource type="Script" path="res://Scripts/Deck.gd" id="4_50glp"]
+[ext_resource type="Script" path="res://Scripts/OpponentHand.gd" id="6_4kpch"]
+[ext_resource type="Script" path="res://Scripts/InputManager.gd" id="6_v1gob"]
+[ext_resource type="Texture2D" uid="uid://shcs0dxlkxu" path="res://Carte/backCover.jpg" id="8_grg3l"]
+[ext_resource type="Script" path="res://Scripts/OpponentDeck.gd" id="10_grg3l"]
+[ext_resource type="Script" path="res://Scripts/BattleManager.gd" id="11_frkhe"]
+[ext_resource type="Texture2D" uid="uid://cuyrkmjuhfast" path="res://Carte/cardDiscardSlot.png" id="12_frkhe"]
+[ext_resource type="Texture2D" uid="uid://j8xeo6k6581j" path="res://Carte/Flux_Dev_Design_a_vibrant_game_board_for_a_card_game_with_a_pr_0.jpg" id="13_frkhe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmxlf"]
+size = Vector2(160, 240)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_frkhe"]
+blend_mode = 3
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_frkhe"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CardsSlots" type="Node2D" parent="."]
+
+[node name="CardSlot2" parent="CardsSlots" instance=ExtResource("3_50glp")]
+z_index = -2
+position = Vector2(680, 600)
+scale = Vector2(0.8, 0.8)
+
+[node name="CardSlot3" parent="CardsSlots" instance=ExtResource("3_50glp")]
+z_index = -2
+position = Vector2(820, 600)
+scale = Vector2(0.8, 0.8)
+
+[node name="CardSlot4" parent="CardsSlots" instance=ExtResource("3_50glp")]
+z_index = -2
+position = Vector2(960, 600)
+scale = Vector2(0.8, 0.8)
+
+[node name="CardSlot5" parent="CardsSlots" instance=ExtResource("3_50glp")]
+z_index = -2
+position = Vector2(1100, 600)
+scale = Vector2(0.8, 0.8)
+
+[node name="CardSlot6" parent="CardsSlots" instance=ExtResource("3_50glp")]
+z_index = -2
+position = Vector2(1240, 600)
+scale = Vector2(0.8, 0.8)
+
+[node name="CardSlot7" parent="CardsSlots" instance=ExtResource("2_v1gob")]
+position = Vector2(680, 350)
+rotation = 3.14159
+scale = Vector2(0.8, 0.8)
+
+[node name="CardSlot8" parent="CardsSlots" instance=ExtResource("2_v1gob")]
+position = Vector2(820, 350)
+rotation = 3.14159
+scale = Vector2(0.8, 0.8)
+
+[node name="CardSlot9" parent="CardsSlots" instance=ExtResource("2_v1gob")]
+position = Vector2(960, 350)
+rotation = 3.14159
+scale = Vector2(0.8, 0.8)
+
+[node name="CardSlot10" parent="CardsSlots" instance=ExtResource("2_v1gob")]
+position = Vector2(1100, 350)
+rotation = 3.14159
+scale = Vector2(0.8, 0.8)
+
+[node name="CardSlot11" parent="CardsSlots" instance=ExtResource("2_v1gob")]
+position = Vector2(1240, 350)
+rotation = 3.14159
+scale = Vector2(0.8, 0.8)
+
+[node name="CardManager" type="Node2D" parent="."]
+position = Vector2(0, 3)
+script = ExtResource("1_pbw6q")
+
+[node name="PlayerHand" type="Node2D" parent="."]
+script = ExtResource("3_jw32o")
+
+[node name="OpponentHand" type="Node2D" parent="."]
+rotation = 3.14159
+script = ExtResource("6_4kpch")
+
+[node name="Deck" type="Node2D" parent="."]
+position = Vector2(140, 955)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("4_50glp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck"]
+z_index = -2
+scale = Vector2(0.178, 0.178)
+texture = ExtResource("8_grg3l")
+
+[node name="Area2D" type="Area2D" parent="Deck"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D"]
+shape = SubResource("RectangleShape2D_bmxlf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Deck"]
+z_index = -2
+offset_left = -9.0
+offset_top = -90.0
+offset_right = 31.0
+offset_bottom = -50.0
+scale = Vector2(2, 2)
+text = "0"
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("6_v1gob")
+
+[node name="EndTurnButton" type="Button" parent="."]
+z_index = 1
+offset_left = 15.0
+offset_top = 500.0
+offset_right = 90.0
+offset_bottom = 531.0
+text = "End turn"
+
+[node name="OpponentDeck" type="Node2D" parent="."]
+position = Vector2(350, 30)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("10_grg3l")
+
+[node name="Sprite2D" type="Sprite2D" parent="OpponentDeck"]
+z_index = -2
+position = Vector2(1780, 125)
+rotation = 3.14159
+scale = Vector2(0.178, 0.178)
+texture = ExtResource("8_grg3l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OpponentDeck"]
+z_index = -2
+offset_left = 1772.8
+offset_top = 160.0
+offset_right = 1812.8
+offset_bottom = 200.0
+scale = Vector2(2, 2)
+text = "0"
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("11_frkhe")
+
+[node name="BattleTimer" type="Timer" parent="."]
+
+[node name="PlayerHealth" type="RichTextLabel" parent="."]
+z_index = 1
+offset_left = 30.0
+offset_top = 700.0
+offset_right = 70.0
+offset_bottom = 740.0
+scale = Vector2(2, 2)
+text = "0"
+
+[node name="OpponentHealth" type="RichTextLabel" parent="."]
+z_index = 1
+offset_left = 30.0
+offset_top = 300.0
+offset_right = 70.0
+offset_bottom = 340.0
+scale = Vector2(2, 2)
+text = "0"
+
+[node name="PlayerDiscard" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(1620, 600)
+scale = Vector2(0.3, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerDiscard"]
+texture = ExtResource("12_frkhe")
+
+[node name="OpponentDiscard" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(300, 350)
+rotation = 3.14159
+scale = Vector2(0.3, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="OpponentDiscard"]
+texture = ExtResource("12_frkhe")
+
+[node name="Back" type="Node" parent="."]
+
+[node name="punteggi" type="Sprite2D" parent="Back"]
+modulate = Color(0.26262, 0.00055502, 0.406296, 1)
+material = SubResource("CanvasItemMaterial_frkhe")
+position = Vector2(50, 520)
+scale = Vector2(100, 500)
+texture = SubResource("CanvasTexture_frkhe")
+
+[node name="Background" type="Sprite2D" parent="Back"]
+z_index = -5
+position = Vector2(960.5, 540.5)
+scale = Vector2(1.30367, 1.29688)
+texture = ExtResource("13_frkhe")
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+
+[connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
+[connection signal="confirmed" from="AcceptDialog" to="BattleManager" method="_on_accept_dialog_confirmed"]
