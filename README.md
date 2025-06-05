@@ -1,0 +1,1 @@
+Brainrotbattle is a card game designed and created by a high school boy attending a technical institute with a focus on computer science. The game was developed by following a tutorial published on YouTube by Barry's Development Hell and was made with no intention of making a profit.
